@@ -1,0 +1,31 @@
+vector<int> find(int arr[], int n , int x )
+    {
+        // code here
+        vector<int> vec(2);
+        int s=0, e=n-1, mid, first=-1, last=-1;
+        while(s<=e){
+            mid=(s+e)/2;
+            if(arr[mid]==x){
+                first= mid;
+                last= mid;
+                while(arr[first] == x){
+                    first--;
+                }
+                while(arr[last] == x){
+                    last++;
+                }
+                vec[0]=first+1;
+                vec[1]=last-1;
+                return vec;
+            }
+            else if(arr[mid] < x){
+                s=mid+1;
+            }
+            else if(arr[mid] > x){
+                e=mid-1;
+            }
+        }
+        vec[0]=-1;
+        vec[1]=-1;
+        return vec;
+    }
